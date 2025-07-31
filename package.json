@@ -2,10 +2,9 @@
   "name": "pix-asaas-app",
   "version": "1.0.0",
   "description": "App PIX Asaas com Vercel Functions",
-  "main": "index.html",
+  "main": "public/index.html",
   "scripts": {
     "dev": "vercel dev",
-    "build": "echo 'No build step required'",
     "deploy": "vercel --prod"
   },
   "keywords": [

@@ -7,7 +7,8 @@ Certifique-se de que todos estes arquivos estão no seu repositório GitHub:
 ### ✅ Arquivos Obrigatórios
 ```
 📁 seu-repositorio/
-├── 📄 index.html              # Interface principal
+├── 📁 public/
+│   └── 📄 index.html         # Interface principal
 ├── 📁 api/
 │   ├── 📄 pix.js             # Vercel Function para PIX
 │   └── 📄 transfer-status.js  # Vercel Function para status
@@ -53,7 +54,7 @@ git push -u origin main
 
 ### 3. Verificar Upload
 Confirme que todos os arquivos estão no repositório:
-- ✅ `index.html` na raiz
+- ✅ `public/index.html` - Interface na pasta public
 - ✅ Pasta `api/` com os 2 arquivos JS
 - ✅ `vercel.json` na raiz
 - ✅ `package.json` na raiz
