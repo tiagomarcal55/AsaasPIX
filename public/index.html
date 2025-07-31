@@ -1610,11 +1610,12 @@
                 case 'PHONE':
                     // Remove formatação, mantém apenas números
                     let cleanPhone = pixKey.replace(/\D/g, '');
-                    // Remove código do país se presente
-                    if (cleanPhone.startsWith('55') && cleanPhone.length > 11) {
-                        cleanPhone = cleanPhone.substring(2);
+                    // Adiciona código do país +55 se não tiver
+                    if (!cleanPhone.startsWith('55')) {
+                        cleanPhone = `55${cleanPhone}`;
                     }
-                    return cleanPhone;
+                    // Retorna com + no início para API do Asaas
+                    return `+${cleanPhone}`;
                 case 'EMAIL':
                 case 'EVP':
                 default:
@@ -1847,6 +1848,11 @@
 
             if (value <= 0) {
                 showToast('Valor deve ser maior que zero', 'error');
+                return;
+            }
+
+            if (value < 1) {
+                showToast('Valor mínimo para PIX é R$ 1,00', 'error');
                 return;
             }
 
