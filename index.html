@@ -1,0 +1,2801 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PIX Asaas</title>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&family=Roboto+Mono:wght@400;500&display=swap"
+        rel="stylesheet">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200"
+        rel="stylesheet">
+    <style>
+        :root {
+            /* Material Design 3 - Light Theme */
+            --md-sys-color-primary: #6750A4;
+            --md-sys-color-on-primary: #FFFFFF;
+            --md-sys-color-primary-container: #EADDFF;
+            --md-sys-color-on-primary-container: #21005D;
+
+            --md-sys-color-secondary: #625B71;
+            --md-sys-color-on-secondary: #FFFFFF;
+            --md-sys-color-secondary-container: #E8DEF8;
+            --md-sys-color-on-secondary-container: #1D192B;
+
+            --md-sys-color-tertiary: #7D5260;
+            --md-sys-color-on-tertiary: #FFFFFF;
+            --md-sys-color-tertiary-container: #FFD8E4;
+            --md-sys-color-on-tertiary-container: #31111D;
+
+            --md-sys-color-error: #BA1A1A;
+            --md-sys-color-on-error: #FFFFFF;
+            --md-sys-color-error-container: #FFDAD6;
+            --md-sys-color-on-error-container: #410002;
+
+            --md-sys-color-surface: #FEF7FF;
+            --md-sys-color-on-surface: #1D1B20;
+            --md-sys-color-surface-variant: #E7E0EC;
+            --md-sys-color-on-surface-variant: #49454F;
+            --md-sys-color-surface-container: #F3EDF7;
+            --md-sys-color-surface-container-high: #ECE6F0;
+            --md-sys-color-surface-container-highest: #E6E0E9;
+
+            --md-sys-color-outline: #79747E;
+            --md-sys-color-outline-variant: #CAC4D0;
+
+            /* Glass effect variables */
+            --glass-bg: rgba(236, 230, 240, 0.8);
+
+            /* Semantic Colors */
+            --md-sys-color-success: #146C2E;
+            --md-sys-color-on-success: #FFFFFF;
+            --md-sys-color-success-container: #B7F397;
+            --md-sys-color-on-success-container: #002204;
+
+            --md-sys-color-warning: #8C5000;
+            --md-sys-color-on-warning: #FFFFFF;
+            --md-sys-color-warning-container: #FFDCBE;
+            --md-sys-color-on-warning-container: #2D1600;
+
+            --md-sys-color-info: #0061A4;
+            --md-sys-color-on-info: #FFFFFF;
+            --md-sys-color-info-container: #D1E4FF;
+            --md-sys-color-on-info-container: #001D36;
+        }
+
+        [data-theme="dark"] {
+            /* Material Design 3 - Dark Theme */
+            --md-sys-color-primary: #D0BCFF;
+            --md-sys-color-on-primary: #381E72;
+            --md-sys-color-primary-container: #4F378B;
+            --md-sys-color-on-primary-container: #EADDFF;
+
+            --md-sys-color-secondary: #CCC2DC;
+            --md-sys-color-on-secondary: #332D41;
+            --md-sys-color-secondary-container: #4A4458;
+            --md-sys-color-on-secondary-container: #E8DEF8;
+
+            --md-sys-color-tertiary: #EFB8C8;
+            --md-sys-color-on-tertiary: #492532;
+            --md-sys-color-tertiary-container: #633B48;
+            --md-sys-color-on-tertiary-container: #FFD8E4;
+
+            --md-sys-color-error: #FFB4AB;
+            --md-sys-color-on-error: #690005;
+            --md-sys-color-error-container: #93000A;
+            --md-sys-color-on-error-container: #FFDAD6;
+
+            --md-sys-color-surface: #141218;
+            --md-sys-color-on-surface: #E6E0E9;
+            --md-sys-color-surface-variant: #49454F;
+            --md-sys-color-on-surface-variant: #CAC4D0;
+            --md-sys-color-surface-container: #211F26;
+            --md-sys-color-surface-container-high: #2B2930;
+            --md-sys-color-surface-container-highest: #36343B;
+
+            --md-sys-color-outline: #938F99;
+            --md-sys-color-outline-variant: #49454F;
+
+            /* Glass effect variables - Dark */
+            --glass-bg: rgba(43, 41, 48, 0.8);
+
+            /* Semantic Colors - Dark */
+            --md-sys-color-success: #9DD67D;
+            --md-sys-color-on-success: #003909;
+            --md-sys-color-success-container: #00531A;
+            --md-sys-color-on-success-container: #B7F397;
+
+            --md-sys-color-warning: #FFB951;
+            --md-sys-color-on-warning: #4A2800;
+            --md-sys-color-warning-container: #6B3C00;
+            --md-sys-color-on-warning-container: #FFDCBE;
+
+            --md-sys-color-info: #9ECAFF;
+            --md-sys-color-on-info: #003258;
+            --md-sys-color-info-container: #00497D;
+            --md-sys-color-on-info-container: #D1E4FF;
+        }
+
+        [data-theme="auto"] {
+            --md-sys-color-surface: #FEF7FF;
+            --md-sys-color-on-surface: #1D1B20;
+        }
+
+        @media (prefers-color-scheme: dark) {
+            [data-theme="auto"] {
+                --md-sys-color-surface: #141218;
+                --md-sys-color-on-surface: #E6E0E9;
+                --md-sys-color-surface-variant: #49454F;
+                --md-sys-color-on-surface-variant: #CAC4D0;
+                --md-sys-color-primary: #D0BCFF;
+            }
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Roboto', sans-serif;
+            background-color: var(--md-sys-color-surface);
+            color: var(--md-sys-color-on-surface);
+            transition: all 0.3s ease;
+        }
+
+        /* Modal Styles - Material Design 3 */
+        .modal-backdrop {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.32);
+            backdrop-filter: blur(4px);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 1000;
+        }
+
+        .modal {
+            background: var(--md-sys-color-surface-container-high);
+            border-radius: 28px;
+            padding: 24px;
+            max-width: 400px;
+            width: 90%;
+            max-height: 80vh;
+            overflow-y: auto;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.15);
+            border: 1px solid var(--md-sys-color-outline-variant);
+        }
+
+        .modal h2 {
+            margin-bottom: 20px;
+            color: var(--md-sys-color-on-surface);
+            font-size: 24px;
+            font-weight: 400;
+        }
+
+        .modal input {
+            width: 100%;
+            padding: 16px;
+            margin: 8px 0;
+            border: 1px solid var(--md-sys-color-outline);
+            border-radius: 12px;
+            background: var(--md-sys-color-surface);
+            color: var(--md-sys-color-on-surface);
+            font-size: 16px;
+            font-family: 'Roboto', sans-serif;
+            transition: all 0.2s ease;
+        }
+
+        .modal input:focus {
+            outline: none;
+            border-color: var(--md-sys-color-primary);
+            border-width: 2px;
+        }
+
+        .modal label {
+            display: flex;
+            align-items: center;
+            margin: 16px 0;
+            cursor: pointer;
+            color: var(--md-sys-color-on-surface);
+            font-size: 14px;
+        }
+
+        .modal label input[type="checkbox"] {
+            width: auto;
+            margin-right: 12px;
+            accent-color: var(--md-sys-color-primary);
+        }
+
+        /* Material Design 3 Buttons */
+        .btn {
+            padding: 10px 24px;
+            border: none;
+            border-radius: 20px;
+            font-size: 14px;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            margin: 4px;
+            font-family: 'Roboto', sans-serif;
+            letter-spacing: 0.1px;
+            min-height: 40px;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .btn.primary {
+            background: var(--md-sys-color-primary);
+            color: var(--md-sys-color-on-primary);
+        }
+
+        .btn.primary:hover {
+            background: var(--md-sys-color-primary);
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12);
+        }
+
+        .btn.secondary {
+            background: var(--md-sys-color-secondary);
+            color: var(--md-sys-color-on-secondary);
+        }
+
+        .btn.error {
+            background: var(--md-sys-color-warning);
+            color: var(--md-sys-color-on-warning);
+        }
+
+        .btn.destructive {
+            background: var(--md-sys-color-tertiary);
+            color: var(--md-sys-color-on-tertiary);
+        }
+
+        .btn.outlined {
+            background: transparent;
+            color: var(--md-sys-color-primary);
+            border: 1px solid var(--md-sys-color-outline);
+        }
+
+        .btn.text {
+            background: transparent;
+            color: var(--md-sys-color-primary);
+        }
+
+        .btn:hover {
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12);
+        }
+
+        .btn:disabled {
+            background: var(--md-sys-color-on-surface);
+            color: var(--md-sys-color-surface);
+            opacity: 0.38;
+            cursor: not-allowed;
+        }
+
+        .forgot-link {
+            color: var(--md-sys-color-primary);
+            text-decoration: none;
+            font-size: 14px;
+            margin-top: 8px;
+            display: block;
+            text-align: center;
+        }
+
+        /* Header - Material Design 3 */
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 16px 20px;
+            background: var(--md-sys-color-surface);
+            border-bottom: 1px solid var(--md-sys-color-outline-variant);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .header h1 {
+            font-size: 28px;
+            font-weight: 400;
+            color: var(--md-sys-color-on-surface);
+            letter-spacing: 0;
+        }
+
+        .settings-btn {
+            background: none;
+            border: none;
+            color: var(--md-sys-color-on-surface-variant);
+            cursor: pointer;
+            padding: 12px;
+            border-radius: 20px;
+            transition: all 0.2s ease;
+            width: 48px;
+            height: 48px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .settings-btn:hover {
+            background: var(--md-sys-color-secondary-container);
+            color: var(--md-sys-color-on-secondary-container);
+        }
+
+        .settings-btn .material-symbols-outlined {
+            font-size: 24px;
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+
+        /* Main Content - Responsive Container */
+        .main-content {
+            padding: 20px;
+            padding-bottom: 120px;
+            min-height: calc(100vh - 140px);
+            max-width: 100%;
+        }
+
+        .content-container {
+            max-width: 480px;
+            margin: 0 auto;
+            background: var(--md-sys-color-surface-container);
+            border-radius: 24px;
+            padding: 24px;
+            border: 1px solid var(--md-sys-color-outline-variant);
+        }
+
+        @media (max-width: 768px) {
+            .content-container {
+                background: transparent;
+                border: none;
+                border-radius: 0;
+                padding: 0;
+                max-width: 100%;
+            }
+
+            .bottom-nav {
+                bottom: 16px;
+                left: 16px;
+                right: 16px;
+                transform: none;
+                min-width: auto;
+                max-width: none;
+            }
+
+            .fab {
+                bottom: 100px;
+            }
+
+            .toast {
+                bottom: 120px;
+                left: 16px;
+                right: 16px;
+                transform: none;
+                max-width: none;
+                min-width: auto;
+            }
+        }
+
+        /* Floating Navigation Toolbar */
+        .bottom-nav {
+            position: fixed;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: var(--glass-bg);
+            border: 1px solid var(--md-sys-color-outline-variant);
+            border-radius: 28px;
+            display: flex;
+            padding: 8px 12px;
+            z-index: 100;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.12), 0 2px 8px rgba(0, 0, 0, 0.08);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            min-width: 280px;
+            max-width: 320px;
+        }
+
+        .nav-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 12px 16px;
+            cursor: pointer;
+            border-radius: 20px;
+            transition: all 0.3s ease;
+            color: var(--md-sys-color-on-surface-variant);
+            flex: 1;
+            min-width: 0;
+            position: relative;
+        }
+
+        .nav-item:hover {
+            background: var(--md-sys-color-surface-container-highest);
+        }
+
+        .nav-item.active {
+            color: var(--md-sys-color-on-primary-container);
+            background: var(--md-sys-color-primary-container);
+        }
+
+        .nav-item .material-symbols-outlined {
+            font-size: 24px;
+            margin-bottom: 4px;
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+
+        .nav-item.active .material-symbols-outlined {
+            font-variation-settings: 'FILL' 1, 'wght' 500, 'GRAD' 0, 'opsz' 24;
+        }
+
+        .nav-item span {
+            font-size: 12px;
+            font-weight: 500;
+            margin-top: 2px;
+        }
+
+        /* Floating toolbar animation on load */
+        .bottom-nav {
+            animation: slideUpFade 0.4s ease-out;
+        }
+
+        @keyframes slideUpFade {
+            from {
+                transform: translateX(-50%) translateY(100px);
+                opacity: 0;
+            }
+
+            to {
+                transform: translateX(-50%) translateY(0);
+                opacity: 1;
+            }
+        }
+
+        /* Tab Content */
+        .tab-content {
+            display: none;
+        }
+
+        .tab-content.active {
+            display: block;
+        }
+
+        /* Environment Badge */
+        .environment-badge {
+            display: none;
+            padding: 8px 16px;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: 500;
+            margin-bottom: 16px;
+            text-align: center;
+        }
+
+        .badge-sandbox {
+            background: var(--md-sys-color-error-container);
+            color: var(--md-sys-color-on-error-container);
+            animation: pulse 2s infinite;
+        }
+
+        .badge-production {
+            background: var(--md-sys-color-success-container);
+            color: var(--md-sys-color-on-success-container);
+        }
+
+        @keyframes pulse {
+            0% {
+                box-shadow: 0 0 0 0 rgba(186, 26, 26, 0.7);
+            }
+
+            70% {
+                box-shadow: 0 0 0 10px rgba(186, 26, 26, 0);
+            }
+
+            100% {
+                box-shadow: 0 0 0 0 rgba(186, 26, 26, 0);
+            }
+        }
+
+        /* PIX Form - Material Design 3 */
+        .form-group {
+            margin-bottom: 24px;
+        }
+
+        .form-label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 500;
+            color: var(--md-sys-color-on-surface);
+            font-size: 14px;
+        }
+
+        .form-input {
+            width: 100%;
+            padding: 16px;
+            border: 1px solid var(--md-sys-color-outline);
+            border-radius: 12px;
+            background: var(--md-sys-color-surface-container);
+            color: var(--md-sys-color-on-surface);
+            font-size: 16px;
+            font-family: 'Roboto', sans-serif;
+            transition: all 0.2s ease;
+        }
+
+        .form-input:focus {
+            outline: none;
+            border-color: var(--md-sys-color-primary);
+            border-width: 2px;
+            background: var(--md-sys-color-surface-container-high);
+        }
+
+        .form-input.valid {
+            border-color: var(--md-sys-color-success);
+            background: var(--md-sys-color-success-container);
+            color: var(--md-sys-color-on-success-container);
+        }
+
+        .form-input.invalid {
+            border-color: var(--md-sys-color-error);
+            background: var(--md-sys-color-error-container);
+            color: var(--md-sys-color-on-error-container);
+        }
+
+        /* PIX Key Type Badge */
+        .pix-key-container {
+            position: relative;
+        }
+
+        .pix-type-badge {
+            position: absolute;
+            top: -8px;
+            right: 12px;
+            padding: 4px 8px;
+            border-radius: 12px;
+            font-size: 10px;
+            font-weight: 500;
+            background: var(--md-sys-color-primary);
+            color: var(--md-sys-color-on-primary);
+            display: none;
+        }
+
+        .pix-type-cpf {
+            background: #4CAF50;
+        }
+
+        .pix-type-cnpj {
+            background: #2196F3;
+        }
+
+        .pix-type-email {
+            background: #FF9800;
+        }
+
+        .pix-type-phone {
+            background: #9C27B0;
+        }
+
+        .pix-type-evp {
+            background: #607D8B;
+        }
+
+        /* Account Selector */
+        .account-selector {
+            margin-bottom: 16px;
+        }
+
+        .account-dropdown {
+            width: 100%;
+            padding: 16px;
+            border: 1px solid var(--md-sys-color-outline);
+            border-radius: 12px;
+            background: var(--md-sys-color-surface-container);
+            color: var(--md-sys-color-on-surface);
+            font-size: 16px;
+            font-family: 'Roboto', sans-serif;
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+
+        .account-dropdown:focus {
+            outline: none;
+            border-color: var(--md-sys-color-primary);
+            border-width: 2px;
+            background: var(--md-sys-color-surface-container-high);
+        }
+
+        /* Environment Toggle - Material Design 3 */
+        .environment-toggle {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 16px;
+            padding: 16px;
+            background: var(--md-sys-color-surface-container);
+            border-radius: 16px;
+            border: 1px solid var(--md-sys-color-outline-variant);
+        }
+
+        .toggle-switch {
+            position: relative;
+            width: 52px;
+            height: 32px;
+            background: var(--md-sys-color-surface-variant);
+            border-radius: 16px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            border: 2px solid var(--md-sys-color-outline);
+        }
+
+        .toggle-switch.active {
+            background: var(--md-sys-color-primary);
+            border-color: var(--md-sys-color-primary);
+        }
+
+        .toggle-slider {
+            position: absolute;
+            top: 2px;
+            left: 2px;
+            width: 24px;
+            height: 24px;
+            background: var(--md-sys-color-outline);
+            border-radius: 50%;
+            transition: all 0.3s ease;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+        }
+
+        .toggle-switch.active .toggle-slider {
+            transform: translateX(20px);
+            background: var(--md-sys-color-on-primary);
+        }
+
+        /* FAB - Material Design 3 */
+        .fab {
+            position: fixed;
+            bottom: 120px;
+            right: 20px;
+            width: 56px;
+            height: 56px;
+            border-radius: 16px;
+            background: var(--md-sys-color-primary-container);
+            color: var(--md-sys-color-on-primary-container);
+            border: none;
+            cursor: pointer;
+            box-shadow: 0 6px 10px rgba(0, 0, 0, 0.14), 0 1px 18px rgba(0, 0, 0, 0.12);
+            transition: all 0.2s ease;
+            z-index: 50;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .fab:hover {
+            box-shadow: 0 8px 12px rgba(0, 0, 0, 0.16), 0 2px 20px rgba(0, 0, 0, 0.14);
+            transform: translateY(-2px);
+        }
+
+        .fab:disabled {
+            background: var(--md-sys-color-on-surface);
+            color: var(--md-sys-color-surface);
+            opacity: 0.38;
+            cursor: not-allowed;
+            transform: none;
+            box-shadow: none;
+        }
+
+        .fab .material-symbols-outlined {
+            font-size: 24px;
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+
+        /* Snackbar - Material Design 3 */
+        .toast {
+            position: fixed;
+            bottom: 140px;
+            left: 50%;
+            transform: translateX(-50%);
+            padding: 14px 16px;
+            border-radius: 4px;
+            font-weight: 400;
+            font-size: 14px;
+            z-index: 1001;
+            max-width: 344px;
+            min-width: 288px;
+            width: auto;
+            text-align: left;
+            box-shadow: 0 3px 5px -1px rgba(0, 0, 0, 0.2), 0 6px 10px 0 rgba(0, 0, 0, 0.14), 0 1px 18px 0 rgba(0, 0, 0, 0.12);
+        }
+
+        .toast-success,
+        .toast-error,
+        .toast-info,
+        .toast-warning {
+            background: var(--md-sys-color-surface-container-high);
+            color: var(--md-sys-color-on-surface);
+            border: 1px solid var(--md-sys-color-outline-variant);
+        }
+
+
+
+        /* Animations */
+        .slide-in {
+            animation: slideIn 0.3s ease-out;
+        }
+
+        .slide-out {
+            animation: slideOut 0.3s ease-in;
+        }
+
+        @keyframes slideIn {
+            from {
+                transform: translateY(100%);
+                opacity: 0;
+            }
+
+            to {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+
+        @keyframes slideOut {
+            from {
+                transform: translateY(0);
+                opacity: 1;
+            }
+
+            to {
+                transform: translateY(100%);
+                opacity: 0;
+            }
+        }
+
+        .loading-spinner {
+            animation: spin 1s linear infinite;
+        }
+
+        @keyframes spin {
+            from {
+                transform: rotate(0deg);
+            }
+
+            to {
+                transform: rotate(360deg);
+            }
+        }
+
+        /* Account Cards */
+        .account-card {
+            padding: 20px;
+            border-radius: 16px;
+            margin-bottom: 16px;
+            color: white;
+            position: relative;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+            transition: all 0.2s ease;
+        }
+
+        .account-card:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 16px rgba(0, 0, 0, 0.2);
+        }
+
+        /* Material Design 3 Account Cards */
+        .account-card-1 {
+            background: linear-gradient(135deg, var(--md-sys-color-primary), var(--md-sys-color-primary-container));
+            color: var(--md-sys-color-on-primary);
+        }
+
+        .account-card-2 {
+            background: linear-gradient(135deg, var(--md-sys-color-secondary), var(--md-sys-color-secondary-container));
+            color: var(--md-sys-color-on-secondary);
+        }
+
+        .account-card-3 {
+            background: linear-gradient(135deg, var(--md-sys-color-tertiary), var(--md-sys-color-tertiary-container));
+            color: var(--md-sys-color-on-tertiary);
+        }
+
+        .account-card-4 {
+            background: linear-gradient(135deg, var(--md-sys-color-success), var(--md-sys-color-success-container));
+            color: var(--md-sys-color-on-success);
+        }
+
+        .account-card-5 {
+            background: linear-gradient(135deg, var(--md-sys-color-info), var(--md-sys-color-info-container));
+            color: var(--md-sys-color-on-info);
+        }
+
+        .account-menu {
+            position: absolute;
+            top: 16px;
+            right: 16px;
+            background: none;
+            border: none;
+            color: white;
+            font-size: 20px;
+            cursor: pointer;
+        }
+
+        /* History Styles */
+        .history-accordion {
+            margin-bottom: 16px;
+        }
+
+        .accordion-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 20px;
+            background: var(--md-sys-color-surface-container-high);
+            border-radius: 16px;
+            cursor: pointer;
+            margin-bottom: 12px;
+            transition: all 0.2s ease;
+            border: 1px solid var(--md-sys-color-outline-variant);
+        }
+
+        .accordion-header:hover {
+            background: var(--md-sys-color-surface-container-highest);
+        }
+
+        .accordion-content {
+            display: none;
+            padding: 0 20px 16px 20px;
+        }
+
+        .accordion-content.active {
+            display: block;
+        }
+
+        .history-item {
+            background: var(--md-sys-color-surface-container);
+            border: 1px solid var(--md-sys-color-outline-variant);
+            border-radius: 12px;
+            padding: 16px;
+            margin-bottom: 12px;
+            transition: all 0.2s ease;
+        }
+
+        .history-item:hover {
+            background: var(--md-sys-color-surface-container-high);
+        }
+
+        .history-item-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 8px;
+        }
+
+        .status-badge {
+            padding: 4px 8px;
+            border-radius: 12px;
+            font-size: 10px;
+            font-weight: 500;
+        }
+
+        .status-success {
+            background: var(--md-sys-color-success-container);
+            color: var(--md-sys-color-on-success-container);
+        }
+
+        .status-failed {
+            background: var(--md-sys-color-error-container);
+            color: var(--md-sys-color-on-error-container);
+        }
+
+        .status-pending {
+            background: var(--md-sys-color-warning-container);
+            color: var(--md-sys-color-on-warning-container);
+        }
+
+        .env-badge {
+            padding: 2px 6px;
+            border-radius: 8px;
+            font-size: 10px;
+            font-weight: 500;
+            margin-left: 8px;
+        }
+
+        .env-sandbox {
+            background: var(--md-sys-color-error-container);
+            color: var(--md-sys-color-on-error-container);
+        }
+
+        .env-production {
+            background: var(--md-sys-color-success-container);
+            color: var(--md-sys-color-on-success-container);
+        }
+
+        /* Config Modal Styles */
+        .config-section {
+            margin-bottom: 24px;
+            padding-bottom: 16px;
+            border-bottom: 1px solid var(--md-sys-color-surface-variant);
+        }
+
+        .config-section:last-child {
+            border-bottom: none;
+        }
+
+        .config-section h3 {
+            margin-bottom: 12px;
+            color: var(--md-sys-color-primary);
+        }
+
+        .theme-toggle-container {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 12px 0;
+        }
+
+        .theme-toggle-switch {
+            position: relative;
+            width: 52px;
+            height: 32px;
+            background: var(--md-sys-color-surface-variant);
+            border-radius: 16px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            border: 2px solid var(--md-sys-color-outline);
+        }
+
+        .theme-toggle-switch.active {
+            background: var(--md-sys-color-primary);
+            border-color: var(--md-sys-color-primary);
+        }
+
+        .theme-toggle-slider {
+            position: absolute;
+            top: 2px;
+            left: 2px;
+            width: 24px;
+            height: 24px;
+            background: var(--md-sys-color-outline);
+            border-radius: 50%;
+            transition: all 0.3s ease;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+        }
+
+        .theme-toggle-switch.active .theme-toggle-slider {
+            transform: translateX(20px);
+            background: var(--md-sys-color-on-primary);
+        }
+
+        /* Remember Session Switch */
+        .remember-session-container {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 16px 0;
+            margin: 16px 0;
+        }
+
+        #remember-session-switch {
+            position: relative;
+            width: 52px;
+            height: 32px;
+            background: var(--md-sys-color-surface-variant);
+            border-radius: 16px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            border: 2px solid var(--md-sys-color-outline);
+        }
+
+        #remember-session-switch.active {
+            background: var(--md-sys-color-primary) !important;
+            border-color: var(--md-sys-color-primary) !important;
+        }
+
+        .remember-session-slider {
+            position: absolute;
+            top: 2px;
+            left: 2px;
+            width: 24px;
+            height: 24px;
+            background: var(--md-sys-color-outline);
+            border-radius: 50%;
+            transition: all 0.3s ease;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+        }
+
+        #remember-session-switch.active .remember-session-slider {
+            transform: translateX(20px) !important;
+            background: var(--md-sys-color-on-primary) !important;
+        }
+
+        /* Duplicate Transfer Warning */
+        .duplicate-transfer-warning {
+            background: linear-gradient(135deg, #FFF3E0, #FFE0B2);
+            border: 2px solid var(--md-sys-color-warning);
+            border-radius: 12px;
+            padding: 16px;
+            margin: 12px 0;
+        }
+
+        .duplicate-transfer-warning ul {
+            margin: 8px 0;
+            padding-left: 20px;
+        }
+
+        .duplicate-transfer-warning li {
+            margin: 4px 0;
+            line-height: 1.4;
+        }
+
+        .transfer-summary {
+            background: var(--md-sys-color-surface-variant);
+            border-radius: 8px;
+            padding: 12px;
+            margin: 8px 0;
+            font-family: 'Roboto Mono', monospace;
+        }
+
+        /* Suggestions */
+        .suggestions-dropdown {
+            position: absolute;
+            top: 100%;
+            left: 0;
+            right: 0;
+            background: var(--md-sys-color-surface);
+            border: 1px solid var(--md-sys-color-surface-variant);
+            border-radius: 8px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            z-index: 100;
+            max-height: 200px;
+            overflow-y: auto;
+        }
+
+        .suggestion-item {
+            padding: 12px 16px;
+            cursor: pointer;
+            transition: background 0.2s ease;
+        }
+
+        .suggestion-item:hover {
+            background: var(--md-sys-color-surface-variant);
+        }
+
+        /* Debug Panel */
+        .debug-panel {
+            position: fixed;
+            top: 0;
+            right: -400px;
+            width: 400px;
+            height: 100vh;
+            background: var(--md-sys-color-surface-container);
+            border-left: 1px solid var(--md-sys-color-outline-variant);
+            z-index: 2000;
+            transition: right 0.3s ease;
+            overflow-y: auto;
+            padding: 24px;
+            box-shadow: -4px 0 16px rgba(0, 0, 0, 0.1);
+        }
+
+        .debug-panel.active {
+            right: 0;
+        }
+
+        .debug-content {
+            font-family: 'Roboto Mono', monospace;
+            font-size: 12px;
+            white-space: pre-wrap;
+            word-break: break-all;
+        }
+
+        /* Responsive */
+        @media (max-width: 480px) {
+            .debug-panel {
+                width: 100%;
+                right: -100%;
+            }
+
+            .modal {
+                width: 95%;
+                margin: 10px;
+            }
+        }
+
+        /* Hidden by default */
+        .hidden {
+            display: none !important;
+        }
+    </style>
+</head>
+
+<body data-theme="dark">
+    <!-- Master Password Modal -->
+    <div id="master-password-modal" class="modal-backdrop">
+        <div class="modal slide-in">
+            <h2 id="password-modal-title">Definir Senha Mestra</h2>
+            <div id="first-time-setup">
+                <input type="password" id="new-password" placeholder="Nova senha (min 8 caracteres)">
+                <input type="password" id="confirm-password" placeholder="Confirmar senha">
+            </div>
+            <div id="login-form" class="hidden">
+                <input type="password" id="login-password" placeholder="Senha mestra">
+                <a href="#" class="forgot-link" onclick="resetMasterPassword()">Esqueci a senha</a>
+            </div>
+            <div class="remember-session-container">
+                <span>Lembrar por 24h</span>
+                <div id="remember-session-switch" style="cursor: pointer;">
+                    <div class="remember-session-slider"></div>
+                </div>
+            </div>
+            <button class="btn primary" id="password-submit-btn">Criar Senha</button>
+        </div>
+    </div>
+
+    <!-- Main App -->
+    <div id="main-app" class="hidden">
+        <!-- Header -->
+        <header class="header">
+            <h1>PIX Asaas</h1>
+            <div style="display: flex; align-items: center; gap: 12px;">
+                <div
+                    style="background: var(--md-sys-color-warning-container); color: var(--md-sys-color-on-warning-container); padding: 4px 8px; border-radius: 12px; font-size: 12px; font-weight: 500;">
+                    DEMO
+                </div>
+                <button class="settings-btn" onclick="openSettings()">
+                    <span class="material-symbols-outlined">settings</span>
+                </button>
+            </div>
+        </header>
+
+        <!-- Environment Badge -->
+        <div id="environment-badge" class="environment-badge"></div>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <!-- PIX Tab -->
+            <div id="pix-tab" class="tab-content active">
+                <div class="content-container">
+                    <div class="account-selector">
+                        <label class="form-label">Conta</label>
+                        <select id="account-dropdown" class="account-dropdown">
+                            <option value="">Selecione uma conta</option>
+                        </select>
+                    </div>
+
+                    <div id="environment-toggle" class="environment-toggle hidden">
+                        <span>Ambiente</span>
+                        <div class="toggle-switch" onclick="toggleEnvironment()">
+                            <div class="toggle-slider"></div>
+                        </div>
+                        <span id="environment-label">Sandbox</span>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="form-label">Chave PIX</label>
+                        <div class="pix-key-container">
+                            <input type="text" id="pix-key" class="form-input" placeholder="Digite a chave PIX">
+                            <div id="pix-key-type-badge" class="pix-type-badge"></div>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="form-label">Valor</label>
+                        <input type="text" id="pix-value" class="form-input" placeholder="R$ 0,00">
+                    </div>
+
+                    <div class="form-group">
+                        <label class="form-label">Descrição</label>
+                        <input type="text" id="pix-description" class="form-input"
+                            placeholder="Descrição da transferência">
+                    </div>
+                </div>
+            </div>
+
+            <!-- Accounts Tab -->
+            <div id="accounts-tab" class="tab-content">
+                <div class="content-container">
+                    <div id="accounts-list"></div>
+                </div>
+            </div>
+
+            <!-- History Tab -->
+            <div id="history-tab" class="tab-content">
+                <div class="content-container">
+                    <div style="margin-bottom: 16px; display: flex; gap: 8px; flex-wrap: wrap;">
+                        <button class="btn outlined" onclick="exportHistory()">Exportar</button>
+                        <button class="btn outlined" onclick="importData()">Importar</button>
+                        <button class="btn destructive" onclick="clearAllHistory()">Limpar</button>
+                    </div>
+                    <div id="history-list"></div>
+                </div>
+            </div>
+        </main>
+        <!-- Bottom Navigation -->
+        <nav class="bottom-nav">
+            <div class="nav-item active" onclick="switchTab('pix')">
+                <span class="material-symbols-outlined">send</span>
+                <span>PIX</span>
+            </div>
+            <div class="nav-item" onclick="switchTab('accounts')">
+                <span class="material-symbols-outlined">account_balance</span>
+                <span>Contas</span>
+            </div>
+            <div class="nav-item" onclick="switchTab('history')">
+                <span class="material-symbols-outlined">history</span>
+                <span>Histórico</span>
+            </div>
+        </nav>
+
+        <!-- FAB -->
+        <button id="main-fab" class="fab" onclick="handleFabClick()">
+            <span class="material-symbols-outlined">send</span>
+        </button>
+    </div>
+
+    <!-- Debug Panel -->
+    <div id="debug-panel" class="debug-panel">
+        <h3>Debug Panel</h3>
+        <div id="debug-content" class="debug-content"></div>
+        <button class="btn" onclick="exportDebugLogs()">Export Logs</button>
+        <button class="btn" onclick="clearDebugLogs()">Clear Logs</button>
+        <button class="btn" onclick="toggleDebugMode()">Close</button>
+    </div>
+
+    <script>
+        // Global State (simulating localStorage)
+        let appState = {
+            masterPasswordHash: null,
+            sessionExpiry: null,
+            sessionActive: false,
+            accounts: [],
+            history: [],
+            currentTheme: 'dark',
+            debugMode: false,
+            debugLogs: []
+        };
+
+        let currentAccount = null;
+        let currentEnvironment = 'sandbox';
+
+        // PIX Validators - Conforme documentação Asaas
+        const pixValidators = {
+            // CPF: 11 dígitos com ou sem formatação
+            CPF: /^(\d{3}\.?\d{3}\.?\d{3}-?\d{2}|\d{11})$/,
+            // CNPJ: 14 dígitos com ou sem formatação
+            CNPJ: /^(\d{2}\.?\d{3}\.?\d{3}\/?\d{4}-?\d{2}|\d{14})$/,
+            // Email: formato padrão de email (mais flexível)
+            EMAIL: /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)*$/,
+            // Telefone: formato brasileiro flexível
+            PHONE: /^(\+?55\s?)?(\(?\d{2}\)?\s?)?\d{4,5}-?\d{4}$|^\+?55\d{10,11}$|^\d{10,11}$|^55\d{10,11}$/,
+            // Chave aleatória (EVP): UUID format ou string alfanumérica
+            EVP: /^[a-f0-9]{8}-[a-f0-9]{4}-[a-f0-9]{4}-[a-f0-9]{4}-[a-f0-9]{12}$/i
+        };
+
+        // Initialize App
+        document.addEventListener('DOMContentLoaded', function () {
+            console.log('PIX Asaas App initialized');
+
+            // Suprimir erros de extensões do browser
+            window.addEventListener('error', function (e) {
+                if (e.message && (e.message.includes('message port closed') ||
+                    e.message.includes('runtime.lastError'))) {
+                    e.preventDefault();
+                    return false;
+                }
+            });
+
+            // Suprimir erros no console
+            const originalConsoleError = console.error;
+            console.error = function (...args) {
+                const message = args.join(' ');
+                if (message.includes('runtime.lastError') ||
+                    message.includes('message port closed')) {
+                    return; // Não mostra esses erros
+                }
+                originalConsoleError.apply(console, args);
+            };
+
+            checkSession();
+            setupEventListeners();
+            setupDescriptionAutocomplete();
+            loadTheme();
+            resetInactivityTimer();
+
+            // Setup remember session switch
+            setTimeout(() => {
+                const rememberSwitch = document.getElementById('remember-session-switch');
+                if (rememberSwitch && !rememberSwitch.hasAttribute('data-initialized')) {
+                    rememberSwitch.setAttribute('data-initialized', 'true');
+                    rememberSwitch.addEventListener('click', function (e) {
+                        e.preventDefault();
+                        e.stopPropagation();
+                        toggleRememberSession();
+                    });
+                }
+            }, 500);
+
+
+
+            // Initialize sample data after a short delay
+            setTimeout(initSampleData, 1000);
+        });
+
+        // Session Management
+        function checkSession() {
+            if (appState.sessionActive && appState.sessionExpiry && new Date() < new Date(appState.sessionExpiry)) {
+                showMainApp();
+            } else {
+                showMasterPasswordModal();
+            }
+        }
+
+        function showMasterPasswordModal() {
+            const modal = document.getElementById('master-password-modal');
+            const title = document.getElementById('password-modal-title');
+            const firstTimeSetup = document.getElementById('first-time-setup');
+            const loginForm = document.getElementById('login-form');
+            const submitBtn = document.getElementById('password-submit-btn');
+
+            if (appState.masterPasswordHash) {
+                // Existing user - login
+                title.textContent = 'Digite sua Senha';
+                firstTimeSetup.classList.add('hidden');
+                loginForm.classList.remove('hidden');
+                submitBtn.textContent = 'Desbloquear';
+            } else {
+                // First time - setup
+                title.textContent = 'Definir Senha';
+                firstTimeSetup.classList.remove('hidden');
+                loginForm.classList.add('hidden');
+                submitBtn.textContent = 'Criar Senha';
+            }
+
+            modal.classList.remove('hidden');
+
+            // Initialize remember session switch
+            rememberSessionActive = false;
+            const rememberSwitch = document.getElementById('remember-session-switch');
+            if (rememberSwitch) {
+                rememberSwitch.classList.remove('active');
+            }
+        }
+
+        function showMainApp() {
+            document.getElementById('master-password-modal').classList.add('hidden');
+            document.getElementById('main-app').classList.remove('hidden');
+            loadAccounts();
+            updateEnvironmentBadge();
+        }
+        // Event Listeners
+        function setupEventListeners() {
+            // Master password form
+            document.getElementById('password-submit-btn').addEventListener('click', handlePasswordSubmit);
+
+            // PIX form inputs
+            document.getElementById('pix-key').addEventListener('input', handlePixKeyInput);
+            document.getElementById('pix-value').addEventListener('input', handleValueInput);
+            document.getElementById('account-dropdown').addEventListener('change', handleAccountChange);
+
+            // Debug mode shortcut
+            document.addEventListener('keydown', function (e) {
+                if (e.ctrlKey && e.shiftKey && e.code === 'KeyD') {
+                    e.preventDefault();
+                    toggleDebugMode();
+                }
+            });
+        }
+
+        // Password Management
+        async function handlePasswordSubmit() {
+            if (appState.masterPasswordHash) {
+                // Login
+                const password = document.getElementById('login-password').value;
+                const hash = await hashPassword(password);
+
+                if (hash === appState.masterPasswordHash) {
+                    const remember = rememberSessionActive;
+                    appState.sessionActive = true;
+                    appState.sessionExpiry = remember ?
+                        new Date(Date.now() + 24 * 60 * 60 * 1000).toISOString() :
+                        new Date(Date.now() + 30 * 60 * 1000).toISOString();
+
+                    showMainApp();
+                    showToast('Acesso liberado!', 'success');
+                } else {
+                    showToast('Senha incorreta', 'error');
+                }
+            } else {
+                // Setup
+                const newPassword = document.getElementById('new-password').value;
+                const confirmPassword = document.getElementById('confirm-password').value;
+
+                if (newPassword.length < 8) {
+                    showToast('Senha deve ter pelo menos 8 caracteres', 'error');
+                    return;
+                }
+
+                if (newPassword !== confirmPassword) {
+                    showToast('Senhas não coincidem', 'error');
+                    return;
+                }
+
+                appState.masterPasswordHash = await hashPassword(newPassword);
+                const remember = rememberSessionActive;
+                appState.sessionActive = true;
+                appState.sessionExpiry = remember ?
+                    new Date(Date.now() + 24 * 60 * 60 * 1000).toISOString() :
+                    new Date(Date.now() + 30 * 60 * 1000).toISOString();
+
+                showMainApp();
+                showToast('Senha mestra criada!', 'success');
+            }
+        }
+
+        async function hashPassword(password) {
+            const encoder = new TextEncoder();
+            const data = encoder.encode(password);
+            const hash = await crypto.subtle.digest('SHA-256', data);
+            return Array.from(new Uint8Array(hash)).map(b => b.toString(16).padStart(2, '0')).join('');
+        }
+
+        // PIX Key Detection and Validation
+        function detectPixKeyType(pixKey) {
+            if (!pixKey || pixKey.trim() === '') return null;
+
+            const trimmedKey = pixKey.trim();
+
+            // Testa EMAIL primeiro (mais específico)
+            if (pixValidators.EMAIL.test(trimmedKey)) return 'EMAIL';
+
+            // Testa EVP (chave aleatória)
+            if (pixValidators.EVP.test(trimmedKey)) return 'EVP';
+
+            // Remove formatação para testar CPF/CNPJ
+            const cleanKey = trimmedKey.replace(/\D/g, '');
+
+            // Testa CPF (11 dígitos)
+            if (cleanKey.length === 11 && pixValidators.CPF.test(trimmedKey) && isValidCPF(cleanKey)) {
+                return 'CPF';
+            }
+
+            // Testa CNPJ (14 dígitos)
+            if (cleanKey.length === 14 && pixValidators.CNPJ.test(trimmedKey) && isValidCNPJ(cleanKey)) {
+                return 'CNPJ';
+            }
+
+            // Testa PHONE (vários formatos)
+            if (pixValidators.PHONE.test(trimmedKey)) {
+                // Verifica se tem pelo menos 10 dígitos (telefone brasileiro)
+                const phoneDigits = cleanKey;
+                if (phoneDigits.length >= 10 && phoneDigits.length <= 13) {
+                    return 'PHONE';
+                }
+            }
+
+            return null;
+        }
+
+        function isValidCPF(cpf) {
+            if (cpf.length !== 11 || /^(\d)\1{10}$/.test(cpf)) return false;
+
+            let sum = 0;
+            for (let i = 0; i < 9; i++) {
+                sum += parseInt(cpf.charAt(i)) * (10 - i);
+            }
+            let remainder = (sum * 10) % 11;
+            if (remainder === 10 || remainder === 11) remainder = 0;
+            if (remainder !== parseInt(cpf.charAt(9))) return false;
+
+            sum = 0;
+            for (let i = 0; i < 10; i++) {
+                sum += parseInt(cpf.charAt(i)) * (11 - i);
+            }
+            remainder = (sum * 10) % 11;
+            if (remainder === 10 || remainder === 11) remainder = 0;
+            return remainder === parseInt(cpf.charAt(10));
+        }
+
+        function isValidCNPJ(cnpj) {
+            if (cnpj.length !== 14) return false;
+
+            const weights1 = [5, 4, 3, 2, 9, 8, 7, 6, 5, 4, 3, 2];
+            const weights2 = [6, 5, 4, 3, 2, 9, 8, 7, 6, 5, 4, 3, 2];
+
+            let sum = 0;
+            for (let i = 0; i < 12; i++) {
+                sum += parseInt(cnpj.charAt(i)) * weights1[i];
+            }
+            let remainder = sum % 11;
+            const digit1 = remainder < 2 ? 0 : 11 - remainder;
+            if (digit1 !== parseInt(cnpj.charAt(12))) return false;
+
+            sum = 0;
+            for (let i = 0; i < 13; i++) {
+                sum += parseInt(cnpj.charAt(i)) * weights2[i];
+            }
+            remainder = sum % 11;
+            const digit2 = remainder < 2 ? 0 : 11 - remainder;
+            return digit2 === parseInt(cnpj.charAt(13));
+        }
+        function handlePixKeyInput(e) {
+            const value = e.target.value;
+            const detectedType = detectPixKeyType(value);
+
+            updatePixKeyTypeBadge(detectedType);
+
+            // Aplica formatação automática
+            if (detectedType === 'CPF') {
+                e.target.value = formatCPF(value);
+            } else if (detectedType === 'CNPJ') {
+                e.target.value = formatCNPJ(value);
+            } else if (detectedType === 'PHONE') {
+                e.target.value = formatPhone(value);
+            }
+
+            const isValid = detectedType !== null;
+            e.target.classList.toggle('valid', isValid);
+            e.target.classList.toggle('invalid', !isValid && value.length > 0);
+
+            updateFabState();
+        }
+
+        function formatCPF(value) {
+            const numbers = value.replace(/\D/g, '');
+            return numbers.replace(/(\d{3})(\d{3})(\d{3})(\d{2})/, '$1.$2.$3-$4');
+        }
+
+        function formatCNPJ(value) {
+            const numbers = value.replace(/\D/g, '');
+            return numbers.replace(/(\d{2})(\d{3})(\d{3})(\d{4})(\d{2})/, '$1.$2.$3/$4-$5');
+        }
+
+        function formatPhone(value) {
+            // Remove tudo exceto dígitos
+            let numbers = value.replace(/\D/g, '');
+
+            // Se começar com 55, assume que é código do país
+            if (numbers.startsWith('55') && numbers.length > 12) {
+                numbers = numbers.substring(2);
+            }
+
+            // Formata conforme o tamanho
+            if (numbers.length === 10) {
+                // Telefone fixo: (XX) XXXX-XXXX
+                return numbers.replace(/(\d{2})(\d{4})(\d{4})/, '($1) $2-$3');
+            } else if (numbers.length === 11) {
+                // Celular: (XX) 9XXXX-XXXX
+                return numbers.replace(/(\d{2})(\d{5})(\d{4})/, '($1) $2-$3');
+            } else if (numbers.length > 11) {
+                // Muito longo, mantém apenas os últimos 11 dígitos
+                numbers = numbers.slice(-11);
+                return numbers.replace(/(\d{2})(\d{5})(\d{4})/, '($1) $2-$3');
+            }
+
+            return value; // Retorna sem formatação se não conseguir identificar
+        }
+
+        function updatePixKeyTypeBadge(keyType) {
+            const badge = document.getElementById('pix-key-type-badge');
+
+            if (keyType) {
+                badge.textContent = keyType;
+                badge.className = `pix-type-badge pix-type-${keyType.toLowerCase()}`;
+                badge.style.display = 'inline-block';
+            } else {
+                badge.style.display = 'none';
+            }
+        }
+
+        // Utility function to parse monetary values
+        function parseMonetaryValue(formattedValue) {
+            if (!formattedValue) return 0;
+            // Remove "R$ " e converte vírgula para ponto
+            const cleanValue = formattedValue.replace('R$ ', '').replace(',', '.');
+            const result = parseFloat(cleanValue) || 0;
+
+            return result;
+        }
+
+        // Utility function to clean PIX key for API
+        function cleanPixKeyForAPI(pixKey, keyType) {
+            if (!pixKey) return '';
+
+            switch (keyType) {
+                case 'CPF':
+                case 'CNPJ':
+                    // Remove formatação, mantém apenas números
+                    return pixKey.replace(/\D/g, '');
+                case 'PHONE':
+                    // Remove formatação, mantém apenas números
+                    let cleanPhone = pixKey.replace(/\D/g, '');
+                    // Remove código do país se presente
+                    if (cleanPhone.startsWith('55') && cleanPhone.length > 11) {
+                        cleanPhone = cleanPhone.substring(2);
+                    }
+                    return cleanPhone;
+                case 'EMAIL':
+                case 'EVP':
+                default:
+                    // Mantém como está, apenas trim
+                    return pixKey.trim();
+            }
+        }
+
+        // Value Input Formatting
+        function handleValueInput(e) {
+            // Remove tudo exceto dígitos
+            let value = e.target.value.replace(/\D/g, '');
+
+            // Se não há valor, limpa o campo
+            if (!value) {
+                e.target.value = '';
+                updateFabState();
+                return;
+            }
+
+            // Converte para centavos e depois para reais
+            const numericValue = parseInt(value) / 100;
+
+            // Formata como moeda brasileira
+            e.target.value = 'R$ ' + numericValue.toFixed(2).replace('.', ',');
+            updateFabState();
+        }
+
+        // Account Management
+        function handleAccountChange(e) {
+            const accountId = e.target.value;
+            currentAccount = appState.accounts.find(acc => acc.id === accountId);
+
+            if (currentAccount) {
+                currentEnvironment = currentAccount.currentEnvironment || 'sandbox';
+                document.getElementById('environment-toggle').classList.remove('hidden');
+                updateEnvironmentToggle();
+                updateEnvironmentBadge();
+            } else {
+                document.getElementById('environment-toggle').classList.add('hidden');
+            }
+
+            updateFabState();
+        }
+
+        function loadAccounts() {
+            const dropdown = document.getElementById('account-dropdown');
+            dropdown.innerHTML = '<option value="">Selecione uma conta</option>';
+
+            appState.accounts.forEach(account => {
+                const option = document.createElement('option');
+                option.value = account.id;
+                option.textContent = account.name;
+                dropdown.appendChild(option);
+            });
+
+            renderAccountsList();
+        }
+
+        function renderAccountsList() {
+            const container = document.getElementById('accounts-list');
+            container.innerHTML = '';
+
+            if (appState.accounts.length === 0) {
+                container.innerHTML = '<p>Nenhuma conta cadastrada</p>';
+                return;
+            }
+
+            appState.accounts.forEach((account, index) => {
+                const card = document.createElement('div');
+                card.className = `account-card account-card-${(index % 5) + 1}`;
+                card.innerHTML = `
+                    <h3>${account.name}</h3>
+                    <p>Ambiente: ${account.currentEnvironment === 'sandbox' ? 'Sandbox' : 'Produção'}</p>
+                    <button class="account-menu" onclick="showAccountMenu('${account.id}')">⋮</button>
+                `;
+                container.appendChild(card);
+            });
+        }
+
+        // Environment Management
+        function toggleEnvironment() {
+            if (!currentAccount) return;
+
+            currentEnvironment = currentEnvironment === 'sandbox' ? 'production' : 'sandbox';
+            currentAccount.currentEnvironment = currentEnvironment;
+
+            updateEnvironmentToggle();
+            updateEnvironmentBadge();
+
+            if (currentEnvironment === 'sandbox') {
+                showToast('Usando ambiente de teste - transações não são reais', 'warning');
+            }
+        }
+
+        function updateEnvironmentToggle() {
+            const toggle = document.querySelector('.toggle-switch');
+            const label = document.getElementById('environment-label');
+
+            if (currentEnvironment === 'production') {
+                toggle.classList.add('active');
+                label.textContent = 'Produção';
+            } else {
+                toggle.classList.remove('active');
+                label.textContent = 'Sandbox';
+            }
+        }
+
+        function updateEnvironmentBadge() {
+            const badge = document.getElementById('environment-badge');
+
+            if (currentAccount) {
+                if (currentEnvironment === 'sandbox') {
+                    badge.innerHTML = 'AMBIENTE DE TESTE';
+                    badge.className = 'environment-badge badge-sandbox';
+                    badge.style.display = 'block';
+                } else {
+                    badge.innerHTML = 'PRODUÇÃO';
+                    badge.className = 'environment-badge badge-production';
+                    badge.style.display = 'block';
+                }
+            } else {
+                badge.style.display = 'none';
+            }
+        }
+        // Navigation
+        function switchTab(tabName) {
+            // Update nav items
+            document.querySelectorAll('.nav-item').forEach(item => item.classList.remove('active'));
+            event.target.closest('.nav-item').classList.add('active');
+
+            // Update tab content
+            document.querySelectorAll('.tab-content').forEach(tab => tab.classList.remove('active'));
+            document.getElementById(`${tabName}-tab`).classList.add('active');
+
+            // Update FAB and load content
+            updateFabForTab(tabName);
+
+            if (tabName === 'history') {
+                renderHistory();
+            } else if (tabName === 'accounts') {
+                renderAccountsList();
+            }
+        }
+
+        function updateFabForTab(tabName) {
+            const fab = document.getElementById('main-fab');
+            const fabIcon = fab.querySelector('.material-symbols-outlined');
+
+            // Reset any timer display
+            fabIcon.style.fontSize = '24px';
+
+            switch (tabName) {
+                case 'pix':
+                    fabIcon.textContent = 'send';
+                    fab.onclick = handlePixSubmit;
+                    updateFabState();
+                    break;
+                case 'accounts':
+                    fabIcon.textContent = 'add';
+                    fab.onclick = () => showAddAccountModal();
+                    fab.disabled = false;
+                    break;
+                case 'history':
+                    fabIcon.textContent = 'download';
+                    fab.onclick = () => exportHistory();
+                    fab.disabled = false;
+                    break;
+            }
+        }
+
+        function updateFabState() {
+            const fab = document.getElementById('main-fab');
+            const pixKey = document.getElementById('pix-key').value;
+            const pixValue = document.getElementById('pix-value').value;
+
+            const isValid = currentAccount &&
+                detectPixKeyType(pixKey) &&
+                pixValue &&
+                parseMonetaryValue(pixValue) > 0;
+
+            fab.disabled = !isValid;
+        }
+
+        // FAB Actions
+        function handleFabClick() {
+            const activeTab = document.querySelector('.tab-content.active').id;
+
+            switch (activeTab) {
+                case 'pix-tab':
+                    handlePixSubmit();
+                    break;
+                case 'accounts-tab':
+                    showAddAccountModal();
+                    break;
+                case 'history-tab':
+                    exportHistory();
+                    break;
+            }
+        }
+
+        // PIX Transfer
+        async function handlePixSubmit() {
+            if (!currentAccount) {
+                showToast('Selecione uma conta', 'error');
+                return;
+            }
+
+            // Verifica se a API Key está configurada para o ambiente atual
+            const apiKey = currentEnvironment === 'sandbox'
+                ? currentAccount.apiKeys.sandbox
+                : currentAccount.apiKeys.production;
+
+            if (!apiKey) {
+                showToast(`API Key não configurada para ambiente ${currentEnvironment}`, 'error');
+                return;
+            }
+
+            const pixKey = document.getElementById('pix-key').value;
+            const pixValue = document.getElementById('pix-value').value;
+            const description = document.getElementById('pix-description').value;
+
+            const keyType = detectPixKeyType(pixKey);
+            if (!keyType) {
+                showToast('Chave PIX inválida', 'error');
+                return;
+            }
+
+            const value = parseMonetaryValue(pixValue);
+
+            if (value <= 0) {
+                showToast('Valor deve ser maior que zero', 'error');
+                return;
+            }
+
+            // Check for duplicates
+            if (checkForDuplicateTransfer({ pixKey, value, accountId: currentAccount.id })) {
+                return;
+            }
+
+            // Limpa a chave PIX para envio à API
+            const cleanPixKey = cleanPixKeyForAPI(pixKey, keyType);
+
+            showTransferConfirmation({
+                pixKey: cleanPixKey,
+                pixKeyDisplay: pixKey, // Mantém formatação para exibição
+                keyType,
+                value,
+                description,
+                account: currentAccount,
+                environment: currentEnvironment
+            });
+        }
+
+        function checkForDuplicateTransfer(newTransfer) {
+            const fifteenMinutesAgo = Date.now() - (15 * 60 * 1000);
+
+            const recentDuplicate = appState.history.find(transfer =>
+                transfer.pixKey === newTransfer.pixKey &&
+                transfer.value === newTransfer.value &&
+                transfer.accountId === newTransfer.accountId &&
+                transfer.timestamp > fifteenMinutesAgo &&
+                (transfer.status === 'success' || transfer.status === 'pending')
+            );
+
+            if (recentDuplicate) {
+                showModal({
+                    title: 'Possível Transferência Duplicada',
+                    content: `
+                        <p>Você fez uma transferência similar há ${getTimeAgo(recentDuplicate.timestamp)}:</p>
+                        <div class="transfer-summary">
+                            <strong>Valor:</strong> R$ ${recentDuplicate.value.toFixed(2).replace('.', ',')}<br>
+                            <strong>Chave:</strong> ${recentDuplicate.pixKey}<br>
+                            <strong>Status:</strong> ${recentDuplicate.status}
+                        </div>
+                        <p>Deseja continuar mesmo assim?</p>
+                    `,
+                    buttons: [
+                        { text: 'Cancelar', action: () => closeModal(), outlined: true },
+                        { text: 'Continuar', action: () => { closeModal(); proceedWithTransfer(); } }
+                    ]
+                });
+                return true;
+            }
+
+            return false;
+        }
+
+        function showTransferConfirmation(transferData) {
+            showModal({
+                title: 'Confirmar Transferência PIX',
+                content: `
+                    <div class="transfer-summary">
+                        <p><strong>Conta:</strong> ${transferData.account.name}</p>
+                        <p><strong>Ambiente:</strong> ${transferData.environment === 'sandbox' ? 'Sandbox (Teste)' : 'Produção'}</p>
+                        <p><strong>Chave PIX:</strong> ${transferData.pixKeyDisplay || transferData.pixKey}</p>
+                        <p><strong>Tipo:</strong> ${transferData.keyType}</p>
+                        <p><strong>Valor:</strong> R$ ${transferData.value.toFixed(2).replace('.', ',')}</p>
+                        <p><strong>Descrição:</strong> ${transferData.description || 'Sem descrição'}</p>
+                    </div>
+                `,
+                buttons: [
+                    { text: 'Cancelar', action: () => closeModal(), outlined: true },
+                    { text: 'Confirmar PIX', action: () => { closeModal(); executeTransfer(transferData); } }
+                ]
+            });
+        }
+        async function executeTransfer(transferData) {
+            showToast('Processando transferência PIX...', 'info');
+
+            // Desabilita o FAB durante o processamento
+            const fab = document.getElementById('main-fab');
+            const originalFabState = fab.disabled;
+            fab.disabled = true;
+
+            try {
+                // Tenta chamar API do Asaas (limitado por CORS no browser)
+                const response = await callAsaasAPI(transferData);
+
+                if (response.status === 409) {
+                    handleTransferError(null, response);
+                    return;
+                }
+
+                if (response.ok && response.data) {
+                    // Só registra no histórico se a API retornou sucesso
+                    const historyItem = {
+                        id: generateUUID(),
+                        accountId: transferData.account.id,
+                        accountName: transferData.account.name,
+                        accountColor: '#6750A4',
+                        environment: transferData.environment,
+                        value: transferData.value,
+                        pixKey: transferData.pixKeyDisplay || transferData.pixKey,
+                        pixKeyType: transferData.keyType,
+                        status: response.data.status || 'pending',
+                        description: transferData.description,
+                        timestamp: Date.now(),
+                        transferId: response.data.id,
+                        asaasResponse: response.data
+                    };
+
+                    appState.history.push(historyItem);
+                    showToast('PIX enviado com sucesso!', 'success');
+                    clearPixForm();
+                } else {
+                    // Mostra erro específico da API
+                    let errorMessage = 'Erro na transferência';
+
+                    if (response.errors && response.errors.length > 0) {
+                        errorMessage = response.errors[0].description;
+                    } else if (response.status === 400) {
+                        errorMessage = 'Dados inválidos. Verifique os campos preenchidos.';
+                    } else if (response.status === 401) {
+                        errorMessage = 'API Key inválida. Verifique suas credenciais.';
+                    } else if (response.status === 403) {
+                        errorMessage = 'Acesso negado. Verifique as permissões da API Key.';
+                    } else if (response.status === 422) {
+                        errorMessage = 'Dados inválidos ou conta sem saldo suficiente.';
+                    } else if (response.status >= 500) {
+                        errorMessage = 'Erro interno do servidor Asaas. Tente novamente.';
+                    }
+
+                    console.error('Erro da API Asaas:', response);
+                    showToast(errorMessage, 'error');
+                }
+            } catch (error) {
+                console.error('Transfer error:', error);
+                let errorMessage = 'Erro na transferência';
+
+                if (error.message.includes('Failed to fetch') || error.message.includes('CORS')) {
+                    errorMessage = '🚫 CORS Error: APIs do Asaas não funcionam diretamente no browser. Você precisa de um backend/proxy.';
+                    showModal({
+                        title: '⚠️ Limitação do Browser',
+                        content: `
+                            <div style="text-align: left;">
+                                <p><strong>Por que não funciona?</strong></p>
+                                <p>A API do Asaas bloqueia chamadas diretas do browser por segurança (CORS policy).</p>
+                                <br>
+                                <p><strong>Soluções:</strong></p>
+                                <ul>
+                                    <li>🔧 Criar um backend (Node.js, PHP, Python) que faça as chamadas</li>
+                                    <li>🌐 Usar um proxy CORS (não recomendado para produção)</li>
+                                    <li>📱 Desenvolver como app mobile (React Native, Flutter)</li>
+                                </ul>
+                                <br>
+                                <p><strong>Para teste:</strong> Este app simula as respostas da API para demonstração.</p>
+                            </div>
+                        `,
+                        buttons: [
+                            { text: 'Entendi', action: () => closeModal(), primary: true }
+                        ]
+                    });
+                } else if (error.message.includes('401')) {
+                    errorMessage = 'API Key inválida. Verifique suas credenciais.';
+                } else if (error.message.includes('400')) {
+                    errorMessage = 'Dados inválidos. Verifique os campos.';
+                }
+
+                showToast(errorMessage, 'error', 6000);
+            } finally {
+                // Reabilita o FAB
+                fab.disabled = originalFabState;
+            }
+        }
+
+        async function callAsaasAPI(transferData) {
+            const apiKey = transferData.environment === 'sandbox'
+                ? transferData.account.apiKeys.sandbox
+                : transferData.account.apiKeys.production;
+
+            if (!apiKey) {
+                throw new Error(`API Key não configurada para ambiente ${transferData.environment}`);
+            }
+
+            const requestBody = {
+                environment: transferData.environment,
+                apiKey: apiKey,
+                transferData: {
+                    value: transferData.value,
+                    pixKey: transferData.pixKey,
+                    keyType: transferData.keyType,
+                    description: transferData.description || undefined
+                }
+            };
+
+            console.log('Enviando para Vercel Function:', requestBody);
+
+            // Chama a Vercel Function que fará a chamada para o Asaas
+            const response = await fetch('/api/pix', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(requestBody)
+            });
+
+            const responseData = await response.json();
+            console.log('Resposta da Vercel Function:', responseData);
+
+            return responseData;
+        }
+
+        // Função para consultar status de transferência
+        async function getTransferStatus(transferId, account, environment) {
+            const baseUrl = environment === 'sandbox'
+                ? 'https://sandbox.asaas.com/api/v3'
+                : 'https://www.asaas.com/api/v3';
+
+            const apiKey = environment === 'sandbox'
+                ? account.apiKeys.sandbox
+                : account.apiKeys.production;
+
+            try {
+                const response = await fetch(`${baseUrl}/transfers/${transferId}`, {
+                    method: 'GET',
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'access_token': apiKey
+                    }
+                });
+
+                if (response.ok) {
+                    const data = await response.json();
+                    return data.status;
+                }
+            } catch (error) {
+                console.error('Erro ao consultar status:', error);
+            }
+
+            return null;
+        }
+
+        function clearPixForm() {
+            document.getElementById('pix-key').value = '';
+            document.getElementById('pix-value').value = '';
+            document.getElementById('pix-description').value = '';
+            document.getElementById('pix-key-type-badge').style.display = 'none';
+            updateFabState();
+        }
+
+        // Utility Functions
+        function generateUUID() {
+            return 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, function (c) {
+                const r = Math.random() * 16 | 0;
+                const v = c == 'x' ? r : (r & 0x3 | 0x8);
+                return v.toString(16);
+            });
+        }
+
+        function getTimeAgo(timestamp) {
+            const now = Date.now();
+            const diff = now - timestamp;
+            const minutes = Math.floor(diff / 60000);
+
+            if (minutes < 1) return 'agora';
+            if (minutes < 60) return `${minutes} min atrás`;
+
+            const hours = Math.floor(minutes / 60);
+            if (hours < 24) return `${hours}h atrás`;
+
+            const days = Math.floor(hours / 24);
+            return `${days} dias atrás`;
+        }
+
+        // Toast System
+        function showToast(message, type = 'info', duration = 4000) {
+            const toast = document.createElement('div');
+            toast.className = `toast toast-${type} slide-in`;
+            toast.textContent = message;
+
+            document.body.appendChild(toast);
+
+            setTimeout(() => {
+                toast.classList.add('slide-out');
+                setTimeout(() => toast.remove(), 300);
+            }, duration);
+        }
+
+        // Modal System
+        function showModal({ title, content, buttons }) {
+            const backdrop = document.createElement('div');
+            backdrop.className = 'modal-backdrop';
+
+            const modal = document.createElement('div');
+            modal.className = 'modal slide-in';
+
+            const titleEl = document.createElement('h2');
+            titleEl.innerHTML = title;
+
+            const contentEl = document.createElement('div');
+            contentEl.innerHTML = content;
+
+            const buttonsEl = document.createElement('div');
+            buttonsEl.style.marginTop = '20px';
+
+            buttons.forEach(btn => {
+                const button = document.createElement('button');
+                let className = 'btn';
+                if (btn.primary) className += ' primary';
+                if (btn.outlined) className += ' outlined';
+                if (btn.destructive) className += ' destructive';
+                button.className = className;
+                button.textContent = btn.text;
+                button.onclick = btn.action;
+                buttonsEl.appendChild(button);
+            });
+
+            modal.appendChild(titleEl);
+            modal.appendChild(contentEl);
+            modal.appendChild(buttonsEl);
+            backdrop.appendChild(modal);
+
+            document.body.appendChild(backdrop);
+            window.currentModal = backdrop;
+        }
+
+        function closeModal() {
+            if (window.currentModal) {
+                window.currentModal.remove();
+                window.currentModal = null;
+            }
+        }
+        // Debug Mode
+        function toggleDebugMode() {
+            appState.debugMode = !appState.debugMode;
+            const debugPanel = document.getElementById('debug-panel');
+            debugPanel.classList.toggle('active', appState.debugMode);
+
+            if (appState.debugMode) {
+                updateDebugPanel();
+                showToast('Modo debug ativado', 'info');
+            } else {
+                showToast('Modo debug desativado', 'info');
+            }
+        }
+
+        function updateDebugPanel() {
+            const debugContent = document.getElementById('debug-content');
+            debugContent.innerHTML = `
+                <h4>App State:</h4>
+                ${JSON.stringify(appState, null, 2)}
+                
+                <h4>Current Account:</h4>
+                ${JSON.stringify(currentAccount, null, 2)}
+                
+                <h4>Debug Logs:</h4>
+                ${JSON.stringify(appState.debugLogs.slice(-10), null, 2)}
+            `;
+        }
+
+        function exportDebugLogs() {
+            const data = {
+                appState,
+                currentAccount,
+                debugLogs: appState.debugLogs
+            };
+
+            const blob = new Blob([JSON.stringify(data, null, 2)], { type: 'application/json' });
+            const url = URL.createObjectURL(blob);
+            const a = document.createElement('a');
+            a.href = url;
+            a.download = 'debug-logs.json';
+            a.click();
+            URL.revokeObjectURL(url);
+        }
+
+        function clearDebugLogs() {
+            appState.debugLogs = [];
+            updateDebugPanel();
+            showToast('Logs limpos', 'info');
+        }
+
+        // Theme Management
+        function loadTheme() {
+            const theme = appState.currentTheme || 'dark';
+            document.body.setAttribute('data-theme', theme);
+
+            // Apply theme-specific styles
+            if (theme === 'auto') {
+                // Let CSS handle auto theme with media queries
+                const isDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches;
+            }
+        }
+
+        // Listen for system theme changes when using auto theme
+        window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', (e) => {
+            if (appState.currentTheme === 'auto') {
+                // Theme will automatically update via CSS
+            }
+        });
+
+        // Settings
+        function openSettings() {
+            showModal({
+                title: 'Configurações',
+                content: `
+                    <div class="config-section">
+                        <h3>ℹ️ Sobre este App</h3>
+                        <p style="font-size: 14px; line-height: 1.4; margin-bottom: 12px;">
+                            App para transferências PIX usando a API do Asaas. Funciona com Vercel Functions para contornar limitações de CORS.
+                        </p>
+                    </div>
+
+                    <div class="config-section">
+                        <h3>Aparência</h3>
+                        <div class="theme-toggle-container">
+                            <span>Tema escuro</span>
+                            <div class="theme-toggle-switch ${appState.currentTheme === 'dark' ? 'active' : ''}" onclick="toggleTheme()">
+                                <div class="theme-toggle-slider"></div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="config-section">
+                        <h3>Segurança</h3>
+                        <button class="btn destructive" onclick="resetMasterPassword()">Redefinir Senha Mestra</button>
+                    </div>
+                    
+                    <div class="config-section">
+                        <h3>Dados</h3>
+                        <button class="btn outlined" onclick="exportAllData()">Exportar Tudo</button>
+                        <button class="btn outlined" onclick="importData()">Importar Dados</button>
+                        <button class="btn destructive" onclick="clearAllData()">Limpar Todos os Dados</button>
+                    </div>
+                `,
+                buttons: [
+                    { text: 'Salvar', action: () => { saveConfig(); closeModal(); }, primary: true },
+                    { text: 'Cancelar', action: () => closeModal(), outlined: true }
+                ]
+            });
+        }
+
+
+
+        function toggleTheme() {
+            const newTheme = appState.currentTheme === 'dark' ? 'light' : 'dark';
+            appState.currentTheme = newTheme;
+            loadTheme();
+
+            // Update toggle visual state
+            const toggle = document.querySelector('.theme-toggle-switch');
+            if (toggle) {
+                toggle.classList.toggle('active', newTheme === 'dark');
+            }
+
+            showToast(`Tema ${newTheme === 'dark' ? 'escuro' : 'claro'} ativado`, 'success');
+        }
+
+        // Remember session switch state
+        let rememberSessionActive = false;
+
+        function toggleRememberSession() {
+            rememberSessionActive = !rememberSessionActive;
+
+            const toggle = document.getElementById('remember-session-switch');
+            if (toggle) {
+                if (rememberSessionActive) {
+                    toggle.classList.add('active');
+                } else {
+                    toggle.classList.remove('active');
+                }
+            }
+        }
+
+        function saveConfig() {
+            showToast('Configurações salvas', 'success');
+        }
+
+        function resetMasterPassword() {
+            if (confirm('Isso irá limpar todos os dados. Continuar?')) {
+                appState = {
+                    masterPasswordHash: null,
+                    sessionExpiry: null,
+                    sessionActive: false,
+                    accounts: [],
+                    history: [],
+                    currentTheme: 'dark',
+                    debugMode: false,
+                    debugLogs: []
+                };
+                location.reload();
+            }
+        }
+
+        function exportAllData() {
+            const blob = new Blob([JSON.stringify(appState, null, 2)], { type: 'application/json' });
+            const url = URL.createObjectURL(blob);
+            const a = document.createElement('a');
+            a.href = url;
+            a.download = 'pix-asaas-backup.json';
+            a.click();
+            URL.revokeObjectURL(url);
+            showToast('Dados exportados', 'success');
+        }
+
+        function clearAllData() {
+            if (confirm('Isso irá apagar TODOS os dados permanentemente. Continuar?')) {
+                resetMasterPassword();
+            }
+        }
+        // Description Suggestions
+        const descriptionSuggestions = [
+            "Pagamento ",
+            "Envio ",
+            "Teste ",
+            "Transferência ",
+            "Reembolso "
+        ];
+
+        function setupDescriptionAutocomplete() {
+            const input = document.getElementById('pix-description');
+            const container = input.parentElement;
+            container.style.position = 'relative';
+
+            input.addEventListener('input', (e) => {
+                const value = e.target.value.toLowerCase();
+                const suggestions = descriptionSuggestions.filter(s =>
+                    s.toLowerCase().includes(value) && value.length > 0
+                );
+
+                showSuggestions(suggestions, input);
+            });
+
+            input.addEventListener('blur', () => {
+                setTimeout(() => hideSuggestions(), 200);
+            });
+        }
+
+        function showSuggestions(suggestions, input) {
+            hideSuggestions();
+
+            if (suggestions.length === 0) return;
+
+            const dropdown = document.createElement('div');
+            dropdown.className = 'suggestions-dropdown';
+            dropdown.id = 'suggestions-dropdown';
+
+            suggestions.forEach(suggestion => {
+                const item = document.createElement('div');
+                item.className = 'suggestion-item';
+                item.textContent = suggestion;
+                item.onclick = () => {
+                    input.value = suggestion;
+                    hideSuggestions();
+                    input.focus();
+                };
+                dropdown.appendChild(item);
+            });
+
+            input.parentElement.appendChild(dropdown);
+        }
+
+        function hideSuggestions() {
+            const dropdown = document.getElementById('suggestions-dropdown');
+            if (dropdown) {
+                dropdown.remove();
+            }
+        }
+
+        // History Management
+        function renderHistory() {
+            const container = document.getElementById('history-list');
+            container.innerHTML = '';
+
+            if (appState.history.length === 0) {
+                container.innerHTML = '<p>Nenhuma transação encontrada</p>';
+                return;
+            }
+
+            // Group by account
+            const groupedHistory = {};
+            appState.history.forEach(item => {
+                if (!groupedHistory[item.accountId]) {
+                    groupedHistory[item.accountId] = [];
+                }
+                groupedHistory[item.accountId].push(item);
+            });
+
+            // Render each account group
+            Object.keys(groupedHistory).forEach(accountId => {
+                const items = groupedHistory[accountId];
+                const account = appState.accounts.find(acc => acc.id === accountId) ||
+                    { name: items[0].accountName, color: items[0].accountColor };
+
+                const accordion = document.createElement('div');
+                accordion.className = 'history-accordion';
+
+                const header = document.createElement('div');
+                header.className = 'accordion-header';
+                header.innerHTML = `
+                    <div>
+                        <strong>${account.name}</strong>
+                        <span class="env-badge env-${items[0].environment}">
+                            ${items[0].environment === 'sandbox' ? 'S' : 'P'}
+                        </span>
+                    </div>
+                    <span>${items.length} transações</span>
+                `;
+                header.onclick = () => toggleAccordion(accordion);
+
+                const content = document.createElement('div');
+                content.className = 'accordion-content';
+
+                // Sort by timestamp (newest first)
+                items.sort((a, b) => b.timestamp - a.timestamp);
+
+                items.forEach(item => {
+                    const historyItem = document.createElement('div');
+                    historyItem.className = 'history-item';
+                    historyItem.innerHTML = `
+                        <div class="history-item-header">
+                            <div>
+                                <strong>R$ ${item.value.toFixed(2).replace('.', ',')}</strong>
+                                <span class="status-badge status-${item.status}">${item.status.toUpperCase()}</span>
+                            </div>
+                            <small>${new Date(item.timestamp).toLocaleString('pt-BR')}</small>
+                        </div>
+                        <div>
+                            <strong>Chave:</strong> ${item.pixKey} (${item.pixKeyType})
+                        </div>
+                        ${item.description ? `<div><strong>Descrição:</strong> ${item.description}</div>` : ''}
+                    `;
+                    content.appendChild(historyItem);
+                });
+
+                accordion.appendChild(header);
+                accordion.appendChild(content);
+                container.appendChild(accordion);
+            });
+        }
+
+        function toggleAccordion(accordion) {
+            const content = accordion.querySelector('.accordion-content');
+            content.classList.toggle('active');
+        }
+
+        // Account Menu
+        function showAccountMenu(accountId) {
+            const account = appState.accounts.find(acc => acc.id === accountId);
+            if (!account) return;
+
+            showModal({
+                title: `${account.name}`,
+                content: `
+                    <div class="form-group">
+                        <label class="form-label">Nome da Conta</label>
+                        <input type="text" id="edit-account-name" class="form-input" value="${account.name}">
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label">API Key Sandbox</label>
+                        <input type="password" id="edit-api-key-sandbox" class="form-input" value="${account.apiKeys.sandbox || ''}">
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label">API Key Produção</label>
+                        <input type="password" id="edit-api-key-production" class="form-input" value="${account.apiKeys.production || ''}">
+                    </div>
+                `,
+                buttons: [
+                    { text: 'Excluir', action: () => { deleteAccount(accountId); closeModal(); } },
+                    { text: 'Cancelar', action: () => closeModal(), outlined: true },
+                    { text: 'Salvar', action: () => { updateAccount(accountId); closeModal(); }, primary: true }
+                ]
+            });
+        }
+
+        function updateAccount(accountId) {
+            const account = appState.accounts.find(acc => acc.id === accountId);
+            if (!account) return;
+
+            const name = document.getElementById('edit-account-name').value;
+            const sandboxKey = document.getElementById('edit-api-key-sandbox').value;
+            const productionKey = document.getElementById('edit-api-key-production').value;
+
+            if (!name || !sandboxKey) {
+                showToast('Nome e chave sandbox são obrigatórios', 'error');
+                return;
+            }
+
+            account.name = name;
+            account.apiKeys.sandbox = sandboxKey;
+            account.apiKeys.production = productionKey || null;
+
+            loadAccounts();
+            showToast('Conta atualizada!', 'success');
+        }
+
+        function deleteAccount(accountId) {
+            if (!confirm('Tem certeza que deseja excluir esta conta?')) return;
+
+            appState.accounts = appState.accounts.filter(acc => acc.id !== accountId);
+            appState.history = appState.history.filter(item => item.accountId !== accountId);
+
+            loadAccounts();
+            renderHistory();
+            showToast('Conta excluída', 'info');
+
+            // Reset current account if it was deleted
+            if (currentAccount && currentAccount.id === accountId) {
+                currentAccount = null;
+                document.getElementById('account-dropdown').value = '';
+                document.getElementById('environment-toggle').classList.add('hidden');
+                updateEnvironmentBadge();
+            }
+        }
+        // Account Management Functions
+        function showAddAccountModal() {
+            showModal({
+                title: 'Nova Conta',
+                content: `
+                    <div class="form-group">
+                        <label class="form-label">Nome da Conta</label>
+                        <input type="text" id="account-name" class="form-input" placeholder="Ex: Minha Empresa">
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label">API Key Sandbox</label>
+                        <input type="password" id="api-key-sandbox" class="form-input" placeholder="Chave do ambiente de teste">
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label">API Key Produção (opcional)</label>
+                        <input type="password" id="api-key-production" class="form-input" placeholder="Chave do ambiente de produção">
+                    </div>
+                `,
+                buttons: [
+                    { text: 'Cancelar', action: () => closeModal(), outlined: true },
+                    { text: 'Salvar Conta', action: () => { saveNewAccount(); closeModal(); }, primary: true }
+                ]
+            });
+        }
+
+        function saveNewAccount() {
+            const name = document.getElementById('account-name').value;
+            const sandboxKey = document.getElementById('api-key-sandbox').value;
+            const productionKey = document.getElementById('api-key-production').value;
+
+            if (!name || !sandboxKey) {
+                showToast('Nome e chave sandbox são obrigatórios', 'error');
+                return;
+            }
+
+            const newAccount = {
+                id: generateUUID(),
+                name: name,
+                color: '#6750A4',
+                apiKeys: {
+                    sandbox: sandboxKey,
+                    production: productionKey || null
+                },
+                currentEnvironment: 'sandbox',
+                createdAt: new Date().toISOString()
+            };
+
+            appState.accounts.push(newAccount);
+            loadAccounts();
+            showToast('Conta salva com sucesso!', 'success');
+        }
+
+        function exportHistory() {
+            if (appState.history.length === 0) {
+                showToast('Nenhum histórico para exportar', 'info');
+                return;
+            }
+
+            const blob = new Blob([JSON.stringify(appState.history, null, 2)], { type: 'application/json' });
+            const url = URL.createObjectURL(blob);
+            const a = document.createElement('a');
+            a.href = url;
+            a.download = 'historico-pix.json';
+            a.click();
+            URL.revokeObjectURL(url);
+            showToast('Histórico exportado', 'success');
+        }
+
+        function importData() {
+            const input = document.createElement('input');
+            input.type = 'file';
+            input.accept = '.json';
+            input.onchange = (e) => {
+                const file = e.target.files[0];
+                if (!file) return;
+
+                const reader = new FileReader();
+                reader.onload = (e) => {
+                    try {
+                        const data = JSON.parse(e.target.result);
+
+                        if (Array.isArray(data)) {
+                            // Import history
+                            appState.history = [...appState.history, ...data];
+                            renderHistory();
+                            showToast(`${data.length} transações importadas`, 'success');
+                        } else if (data.accounts || data.history) {
+                            // Import full backup
+                            if (data.accounts) {
+                                appState.accounts = [...appState.accounts, ...data.accounts];
+                                loadAccounts();
+                            }
+                            if (data.history) {
+                                appState.history = [...appState.history, ...data.history];
+                                renderHistory();
+                            }
+                            showToast('Dados importados com sucesso', 'success');
+                        } else {
+                            showToast('Formato de arquivo inválido', 'error');
+                        }
+                    } catch (error) {
+                        console.error('Import error:', error);
+                        showToast('Erro ao importar arquivo', 'error');
+                    }
+                };
+                reader.readAsText(file);
+            };
+            input.click();
+        }
+
+        function clearAllHistory() {
+            if (confirm('Isso irá apagar TODO o histórico permanentemente. Continuar?')) {
+                appState.history = [];
+                renderHistory();
+                showToast('Histórico limpo', 'info');
+            }
+        }
+
+        // Error Handling for HTTP 409
+        async function handleTransferError(error, response) {
+            if (response.status === 409) {
+                showToast('Transferência duplicada detectada', 'warning', 6000);
+
+                showModal({
+                    title: 'Transferência Duplicada',
+                    content: `
+                        <div class="duplicate-transfer-warning">
+                            <p><strong>Esta transferência já foi realizada nos últimos 15 minutos.</strong></p>
+                            <p>Por segurança, o Asaas bloqueia transferências idênticas em um período curto.</p>
+                            <hr>
+                            <p><strong>Opções:</strong></p>
+                            <ul>
+                                <li>Aguarde 15 minutos para refazer a mesma transferência</li>
+                                <li>Altere o valor ou chave PIX para criar uma nova transferência</li>
+                                <li>Verifique seu histórico se a transferência anterior foi processada</li>
+                            </ul>
+                        </div>
+                    `,
+                    buttons: [
+                        { text: 'Ver Histórico', action: () => { closeModal(); switchTab('history'); } },
+                        { text: 'Alterar Dados', action: () => closeModal() },
+                        { text: 'Aguardar 15min', action: () => { closeModal(); startDuplicateTimer(); } }
+                    ]
+                });
+
+                return 'duplicate';
+            }
+
+            return 'generic_error';
+        }
+
+        function startDuplicateTimer() {
+            const remainingTime = 15 * 60 * 1000; // 15 minutes
+            const endTime = Date.now() + remainingTime;
+
+            const fab = document.getElementById('main-fab');
+            fab.disabled = true;
+
+            const timerInterval = setInterval(() => {
+                const timeLeft = endTime - Date.now();
+
+                if (timeLeft <= 0) {
+                    clearInterval(timerInterval);
+                    showToast('✅ Você já pode refazer a transferência', 'success');
+                    fab.disabled = false;
+                    return;
+                }
+
+                const minutes = Math.floor(timeLeft / 60000);
+                const seconds = Math.floor((timeLeft % 60000) / 1000);
+
+                // Update FAB with timer (visual feedback)
+                const fabIcon = fab.querySelector('.material-symbols-outlined');
+                fabIcon.textContent = `${minutes}:${seconds.toString().padStart(2, '0')}`;
+                fabIcon.style.fontSize = '12px';
+            }, 1000);
+
+            showToast(`⏱️ Timer iniciado - 15 minutos restantes`, 'info');
+        }
+
+        // Auto-lock functionality
+        let inactivityTimer;
+        const INACTIVITY_TIMEOUT = 30 * 60 * 1000; // 30 minutes
+
+        function resetInactivityTimer() {
+            clearTimeout(inactivityTimer);
+            inactivityTimer = setTimeout(() => {
+                if (appState.sessionActive) {
+                    appState.sessionActive = false;
+                    showToast('Sessão expirada por inatividade', 'warning');
+                    setTimeout(() => location.reload(), 2000);
+                }
+            }, INACTIVITY_TIMEOUT);
+        }
+
+        // Track user activity
+        ['mousedown', 'mousemove', 'keypress', 'scroll', 'touchstart'].forEach(event => {
+            document.addEventListener(event, resetInactivityTimer, true);
+        });
+
+        // Initialize with sample data for demo
+        function initSampleData() {
+            if (appState.accounts.length === 0) {
+                appState.accounts.push({
+                    id: generateUUID(),
+                    name: 'Conta Demo',
+                    color: '#6750A4',
+                    apiKeys: {
+                        sandbox: 'demo_sandbox_key',
+                        production: null
+                    },
+                    currentEnvironment: 'sandbox',
+                    createdAt: new Date().toISOString()
+                });
+
+                // Histórico vazio - só dados reais da API serão registrados
+            }
+        }
+
+        // Handle online/offline status
+        window.addEventListener('online', () => {
+            showToast('Conexão restaurada', 'success');
+        });
+
+        window.addEventListener('offline', () => {
+            showToast('Sem conexão com a internet', 'warning');
+        });
+
+        // Prevent accidental page refresh
+        window.addEventListener('beforeunload', (e) => {
+            if (appState.sessionActive) {
+                e.preventDefault();
+                e.returnValue = 'Você tem uma sessão ativa. Tem certeza que deseja sair?';
+            }
+        });
+    </script>
+</body>
+
+</html>
